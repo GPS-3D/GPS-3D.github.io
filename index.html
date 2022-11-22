@@ -8,6 +8,8 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link href="static/css/template.css" rel="stylesheet" type="text/css" />
     <link href="static/css/my_style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css"
         integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc" crossorigin="anonymous">
@@ -33,26 +35,10 @@
             n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
         }(window, document);
     </script>
-    <style>
-        .wf-loading * {
-            opacity: 0;
-        }
-    </style>
 
-    <script src="static/js/video_comparison.js"></script>
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <style>
-        model-viewer {
-            cursor: grab;
-            display: flex;
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-            user-select: none;
-        }
-    </style>
-
+    <script type="text/javascript" src="static/js/zoom.js"></script>
+    <script type="text/javascript" src="static/js/video_comparison.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 </head>
 
 <body>
@@ -62,7 +48,7 @@
             <h1 class="nerf_title_v2">Patch-based 3D Natural Scene Generation <br> from a Single Example</h1>
             <h1 class="nerf_subheader_v2">Anonymous</h1>
             <div>
-                <span class="center"><img src="assets/images/image_teaser.png"></span>
+                <span class="center"><img src="assets/images/teaser.png"></span>
                 <p>High-quality artistic imagery created with generated scenes (background sky post-added)</p>
             </div>
         </div>
@@ -73,7 +59,8 @@
         <div class="w-container grey_container">
             <h2 class="grey-heading_nerf">Abstract</h2>
             <p class="paragraph-3 nerf_text nerf_results_text">
-                We target a <b>3D generative model</b> for <b>general natural scenes</b> hat are typically unique and intricate.
+                We target a <b>3D generative model</b> for <b>general natural scenes</b> hat are typically unique and
+                intricate.
                 Lacking the necessary volumes of training data, along with the difficulties of having ad hoc designs in
                 presence of varying scene characteristics, renders existing setups intractable. Inspired by classical
                 patch-based image models, we advocate for synthesizing 3D scenes at the patch level, given a single
@@ -89,34 +76,37 @@
 
 
     <div class="white_section_nerf w-container">
-        <h2 class="grey-heading_nerf">Random Stynthesis Gallery</h2>
+        <h2 class="grey-heading_nerf">Random Generation Gallery</h2>
 
         <div class="white_section_nerf w-container">
-
-
             <div class="result_container">
                 <div class="h-100 w-25 d-inline-block">
                     <label style="color: rgb(186, 221, 158);"> Exemplar<br></label>
-                    <video class="video" id="Cactus_exemplar" loop playsinline autoPlay muted src="assets/videos/Cactus/exemplar.mp4" onplay="resizeAndPlay(this, ['Cactus_s561064', 'Cactus_s910053', 'Cactus_s906756'])"></video>
+                    <video class="video" id="Cactus_exemplar" loop playsinline autoPlay muted
+                        src="assets/videos/Cactus/exemplar.mp4"
+                        onplay="resizeAndPlay(this, ['Cactus_s561064', 'Cactus_s910053', 'Cactus_s906756'])"></video>
                     <canvas height=0 class="videoMerge" id="Cactus_exemplar_merge"></canvas>
                 </div>
                 <div class="h-100 w-25 d-inline-block">
                     <label style="color: rgb(154, 187, 220);"> Generated Scene 1</label>
-                    <video class="video" id="Cactus_s561064" loop playsinline autoPlay muted src="assets/videos/Cactus/scene_s561064.mp4"></video>
+                    <video class="video" id="Cactus_s561064" loop playsinline autoPlay muted
+                        src="assets/videos/Cactus/scene_s561064.mp4"></video>
                     <canvas height=0 class="videoMerge" id="Cactus_s561064_merge"></canvas>
                 </div>
                 <div class="h-100 w-25 d-inline-block">
                     <label style="color: rgb(154, 187, 220);"> Generated Scene 2</label>
-                    <video class="video" id="Cactus_s910053" loop playsinline autoPlay muted src="assets/videos/Cactus/scene_s910053.mp4"></video>
+                    <video class="video" id="Cactus_s910053" loop playsinline autoPlay muted
+                        src="assets/videos/Cactus/scene_s910053.mp4"></video>
                     <canvas height=0 class="videoMerge" id="Cactus_s910053_merge"></canvas>
                 </div>
                 <div class="h-100 w-25 d-inline-block">
                     <label style="color: rgb(154, 187, 220);"> Generated Scene 3</label>
-                    <video class="video" id="Cactus_s906756" loop playsinline autoPlay muted src="assets/videos/Cactus/scene_s906756.mp4"></video>
+                    <video class="video" id="Cactus_s906756" loop playsinline autoPlay muted
+                        src="assets/videos/Cactus/scene_s906756.mp4"></video>
                     <canvas height=0 class="videoMerge" id="Cactus_s906756_merge"></canvas>
                 </div>
             </div>
-    
+
             <div class="result_container">
                 <div class="h-100 w-25 d-inline-block">
                     <video class="video" id="AlphageChurchRuin_exemplar" loop playsinline autoPlay muted
@@ -143,92 +133,84 @@
 
             <div class="result_container">
                 <div class="h-100 w-25 d-inline-block">
-                    <video class="video" id="VolcanoIslandLowpoly_new_ocean_exemplar" loop playsinline autoPlay muted src="assets/videos/VolcanoIslandLowpoly_new_ocean/exemplar.mp4" onplay="resizeAndPlay(this, ['VolcanoIslandLowpoly_new_ocean_s415042', 'VolcanoIslandLowpoly_new_ocean_s412378', 'VolcanoIslandLowpoly_new_ocean_s415544'])"></video>
+                    <video class="video" id="VolcanoIslandLowpoly_new_ocean_exemplar" loop playsinline autoPlay muted
+                        src="assets/videos/VolcanoIslandLowpoly_new_ocean/exemplar.mp4"
+                        onplay="resizeAndPlay(this, ['VolcanoIslandLowpoly_new_ocean_s415042', 'VolcanoIslandLowpoly_new_ocean_s412378', 'VolcanoIslandLowpoly_new_ocean_s411612'])"></video>
                     <canvas height=0 class="videoMerge" id="VolcanoIslandLowpoly_new_ocean_exemplar_merge"></canvas>
                 </div>
                 <div class="h-100 w-25 d-inline-block">
-                    <video class="video" id="VolcanoIslandLowpoly_new_ocean_s415042" loop playsinline autoPlay muted src="assets/videos/VolcanoIslandLowpoly_new_ocean/scene_s415042.mp4"></video>
+                    <video class="video" id="VolcanoIslandLowpoly_new_ocean_s415042" loop playsinline autoPlay muted
+                        src="assets/videos/VolcanoIslandLowpoly_new_ocean/scene_s415042.mp4"></video>
                     <canvas height=0 class="videoMerge" id="VolcanoIslandLowpoly_new_ocean_s415042_merge"></canvas>
                 </div>
                 <div class="h-100 w-25 d-inline-block">
-                    <video class="video" id="VolcanoIslandLowpoly_new_ocean_s412378" loop playsinline autoPlay muted src="assets/videos/VolcanoIslandLowpoly_new_ocean/scene_s412378.mp4"></video>
+                    <video class="video" id="VolcanoIslandLowpoly_new_ocean_s412378" loop playsinline autoPlay muted
+                        src="assets/videos/VolcanoIslandLowpoly_new_ocean/scene_s412378.mp4"></video>
                     <canvas height=0 class="videoMerge" id="VolcanoIslandLowpoly_new_ocean_s412378_merge"></canvas>
                 </div>
                 <div class="h-100 w-25 d-inline-block">
-                    <video class="video" id="VolcanoIslandLowpoly_new_ocean_s415544" loop playsinline autoPlay muted src="assets/videos/VolcanoIslandLowpoly_new_ocean/scene_s415544.mp4"></video>
-                    <canvas height=0 class="videoMerge" id="VolcanoIslandLowpoly_new_ocean_s415544_merge"></canvas>
+                    <video class="video" id="VolcanoIslandLowpoly_new_ocean_s411612" loop playsinline autoPlay muted
+                        src="assets/videos/VolcanoIslandLowpoly_new_ocean/scene_s411612.mp4"></video>
+                    <canvas height=0 class="videoMerge" id="VolcanoIslandLowpoly_new_ocean_s411612_merge"></canvas>
                 </div>
             </div>
-    
+
         </div>
 
-        
     </div>
 
 
     <div class="white_section_nerf grey_container w-container">
-        <h2 class="grey-heading_nerf">Higher-resolution Generation</h2>
+        <h2 class="grey-heading_nerf">
+            Higher-resolution Generation
+            <button onClick="random_image()"><i class="fa fa-refresh"></i></button>
+
+        </h2>
         <p class="paragraph-3 nerf_text nerf_results_text">
             A novel ”A Thousand Li of Rivers and Mountains” is rendered from a generated 3D sample.
             The resolution of the scene is 1328 × 512 × 200, and the image resolution is 4096 × 1024.
         </p>
-        <div class="csslider infinity" id="slider1">
-            <input type="radio" name="slides" checked="checked" id="slides_1" />
-            <input type="radio" name="slides" id="slides_2" />
-            <input type="radio" name="slides" id="slides_3" />
-            <input type="radio" name="slides" id="slides_4" />
-            <input type="radio" name="slides" id="slides_5" />
-            <ul>
-                <li>
-                    <img src="assets/images/high_reso/scene_s11340_00010.png">
-                </li>
-                <li>
-                    <img src="assets/images/high_reso/scene_s20450_00010.png">
-                </li>
-                <li>
-                    <img src="assets/images/high_reso/scene_s23490_00010.png">
-                </li>
-                <li>
-                    <img src="assets/images/high_reso/scene_s31887_00010.png">
-                </li>
-                <li>
-                    <img src="assets/images/high_reso/scene_s56223_00010.png">
-                </li>
-                <li>
-                    <img src="assets/images/high_reso/scene_s8304_00010.png">
-                </li>
-            </ul>
-            <!-- <div class="arrows">
-                <label for="slides_1"></label>
-                <label for="slides_2"></label>
-                <label for="slides_3"></label>
-                <label for="slides_4"></label>
-                <label for="slides_5"></label>
-                <label class="goto-first" for="slides_1"></label>
-                <label class="goto-last" for="slides_5"></label>
-            </div> -->
-            <div class="navigation">
-                <div>
-                    <label for="slides_1"></label>
-                    <label for="slides_2"></label>
-                    <label for="slides_3"></label>
-                    <label for="slides_4"></label>
-                    <label for="slides_5"></label>
-                </div>
-            </div>
+        <div class="img-magnifier-container">
+            <img id="zoom-in" src="assets/images/high_reso/scene_s29552_00010.png">
+            <script>
+                function random_image() {
+                    var old = document.getElementById('img-magnifier-glass');
+                    old.remove();
+
+                    var node = document.getElementById('zoom-in');
+                    var indx = (Math.ceil(Math.random() * 10));
+                    const images = [
+                        ['assets/images/high_reso/scene_s11340_00010.png', 545, 80],
+                        ['assets/images/high_reso/scene_s8295_00010.png', 910, 120],
+                        ['assets/images/high_reso/scene_s8304_00010.png', 650, 130],
+                        ['assets/images/high_reso/scene_s20450_00010.png', 486, 113],
+                        ['assets/images/high_reso/scene_s23490_00010.png', 594, 110],
+                        ['assets/images/high_reso/scene_s26511_00010.png', 623, 127],
+                        ['assets/images/high_reso/scene_s26534_00010.png', 528, 55],
+                        ['assets/images/high_reso/scene_s29552_00010.png', 610, 115],
+                        ['assets/images/high_reso/scene_s29574_00010.png', 662, 144],
+                        ['assets/images/high_reso/scene_s31887_00010.png', 335, 110],
+                        ['assets/images/high_reso/scene_s37962_00010.png', 660, 80],
+                        ['assets/images/high_reso/scene_s53881_00010.png', 668, 118],
+                    ];
+                    indx = 0
+                    node.src = images[indx][0];
+                    magnify("zoom-in", 5, images[indx][1], images[indx][2]);
+                }
+            </script>
         </div>
 
     </div>
 
     <div class="white_section_nerf w-container">
-        <h2 class="grey-heading_nerf">Eiditing</h2>
+        <h2 class="grey-heading_nerf">Editing</h2>
         <p class="paragraph-3 nerf_text nerf_results_text">
             Users can manipulate on a 3D
             proxy, which can be the underlining mapping field or mesh,
             for editing scenes, such as removal, duplication, and modification.
         </p>
-        <video class="video" id="Eiditing" loop playsinline autoPlay muted
-        src="assets/videos/editing.mp4"></video>
+        <video class="video lozad" id="Eiditing" loop playsinline autoPlay muted
+            src="assets/videos/editing.mp4"></video>
     </div>
 
     <div class="white_section_nerf grey_container w-container">
@@ -237,43 +219,56 @@
             Our method can resize a 3D scene to a target size while maintaining the
             local patches in the exemplar.
         </p>
-        <video class="video" id="Retargeting" loop playsinline autoPlay muted
-        src="assets/videos/retargeting.mp4"></video>
+        <video class="video lozad" id="Retargeting" loop playsinline autoPlay muted
+            src="assets/videos/retargeting.mp4"></video>
     </div>
 
     <div class="white_section_nerf w-container">
         <h2 class="grey-heading_nerf">Structural Analogies</h2>
         <p class="paragraph-3 nerf_text nerf_results_text">
-            Given two scenes A and B, we create a scene with the patch distribution of A, but which is structurally aligned with B.
+            Given two scenes A and B, we create a scene with the patch distribution of A, but which is structurally
+            aligned with B.
         </p>
-        <video class="video" id="Structural_Analogies" loop playsinline autoPlay muted
-        src="assets/videos/structural_analogies.mp4"></video>
+        <video class="video lozad" id="Structural_Analogies" loop playsinline autoPlay muted
+            src="assets/videos/structural_analogies.mp4"></video>
     </div>
 
     <div class="white_section_nerf grey_container w-container">
-        <h2 class="grey-heading_nerf" >Re-decoration</h2>
+        <h2 class="grey-heading_nerf">Re-decoration</h2>
         <p class="paragraph-3 nerf_text nerf_results_text">
-            With the coordinate-based representation, we can re-decorate the generated ones with ease, via simply remapping to exemplars of different appearance.
+            With the coordinate-based representation, we can re-decorate the generated ones with ease, via simply
+            remapping to exemplars of different appearance.
         </p>
-        <video class="video" style="margin-top: -20px;" id="Re-decoration" loop playsinline autoPlay muted
-        src="assets/videos/re-decoration.mp4"></video>
+        <video class="video lozad" id="Re-decoration" loop playsinline autoPlay muted
+            src="assets/videos/re-decoration.mp4"></video>
     </div>
-    
+
     <div class="white_section_nerf w-container">
         <h2 class="grey-heading_nerf">Real-world Results</h2>
         <p class="paragraph-3 nerf_text nerf_results_text">
-            Samples generated with images collected from a real-world scenic site – Bryce canyon <a href="https://www.google.com/help/terms_maps/">©2022 Google</a>.
-            Notably, we only synthesize the region of interest (i.e., the odd rocks) 
-            and the background is disentangled out by modeling with an independent implicit neural network.
+            Samples generated with images collected from a real-world scenic site – Bryce canyon <a
+                href="https://www.google.com/help/terms_maps/">©2022 Google</a>.
+            Notably, we only synthesize the region of interest (i.e., the odd rocks)
+            and the background is separately modeled with an independent implicit neural network.
         </p>
-
-
-
-        <video class="video" id="Real-world" loop playsinline autoPlay muted
-        src="assets/videos/real-world.mp4"></video>
+        <div>
+            <div class="w-50 d-inline-block">
+                <label style="color: rgb(186, 221, 158);"> Exemplar<br></label>
+            </div>
+            <div class="w-50 d-inline-block">
+                <label style="color: rgb(154, 187, 220);"> Generated Scene</label>
+            </div>
+        </div>
+        <video class="video lozad" id="Real-world" loop playsinline autoPlay muted
+            src="assets/videos/real-world.mp4"></video>
     </div>
-
+    <script>
+        const observer = lozad();
+        observer.observe();
+    </script>
 </body>
-
+<footer>
+    <!-- TBD -->
+</footer>
 
 </html>

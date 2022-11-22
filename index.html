@@ -38,7 +38,7 @@
 
     <script type="text/javascript" src="static/js/zoom.js"></script>
     <script type="text/javascript" src="static/js/video_comparison.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script> -->
 </head>
 
 <body>
@@ -180,20 +180,19 @@
                     var node = document.getElementById('zoom-in');
                     var indx = (Math.ceil(Math.random() * 10));
                     const images = [
-                        ['assets/images/high_reso/scene_s11340_00010.png', 545, 80],
-                        ['assets/images/high_reso/scene_s8295_00010.png', 910, 120],
-                        ['assets/images/high_reso/scene_s8304_00010.png', 650, 130],
-                        ['assets/images/high_reso/scene_s20450_00010.png', 486, 113],
-                        ['assets/images/high_reso/scene_s23490_00010.png', 594, 110],
-                        ['assets/images/high_reso/scene_s26511_00010.png', 623, 127],
-                        ['assets/images/high_reso/scene_s26534_00010.png', 528, 55],
-                        ['assets/images/high_reso/scene_s29552_00010.png', 610, 115],
-                        ['assets/images/high_reso/scene_s29574_00010.png', 662, 144],
-                        ['assets/images/high_reso/scene_s31887_00010.png', 335, 110],
-                        ['assets/images/high_reso/scene_s37962_00010.png', 660, 80],
-                        ['assets/images/high_reso/scene_s53881_00010.png', 668, 118],
+                        ['assets/images/high_reso/scene_s11340_00010.png', 0.531, 0.44],
+                        ['assets/images/high_reso/scene_s8295_00010.png', 0.186, 0.75],
+                        ['assets/images/high_reso/scene_s8304_00010.png', 0.670, 0.83],
+                        ['assets/images/high_reso/scene_s20450_00010.png', 0.505, 0.71],
+                        ['assets/images/high_reso/scene_s23490_00010.png', 0.605, 0.61],
+                        ['assets/images/high_reso/scene_s26511_00010.png', 0.502, 0.83],
+                        ['assets/images/high_reso/scene_s26534_00010.png', 0.53, 0.46],
+                        ['assets/images/high_reso/scene_s29552_00010.png', 0.618, 0.71],
+                        ['assets/images/high_reso/scene_s29574_00010.png', 0.672, 0.81],
+                        ['assets/images/high_reso/scene_s31887_00010.png', 0.787, 0.64],
+                        ['assets/images/high_reso/scene_s37962_00010.png', 0.667, 0.51],
+                        ['assets/images/high_reso/scene_s53881_00010.png', 0.693, 0.58],
                     ];
-                    indx = 0
                     node.src = images[indx][0];
                     magnify("zoom-in", 5, images[indx][1], images[indx][2]);
                 }
@@ -209,7 +208,7 @@
             proxy, which can be the underlining mapping field or mesh,
             for editing scenes, such as removal, duplication, and modification.
         </p>
-        <video class="video lozad" id="Eiditing" loop playsinline autoPlay muted
+        <video class="video" id="Eiditing" loop playsinline autoPlay muted
             src="assets/videos/editing.mp4"></video>
     </div>
 
@@ -219,7 +218,7 @@
             Our method can resize a 3D scene to a target size while maintaining the
             local patches in the exemplar.
         </p>
-        <video class="video lozad" id="Retargeting" loop playsinline autoPlay muted
+        <video class="video" id="Retargeting" loop playsinline autoPlay muted
             src="assets/videos/retargeting.mp4"></video>
     </div>
 
@@ -229,7 +228,7 @@
             Given two scenes A and B, we create a scene with the patch distribution of A, but which is structurally
             aligned with B.
         </p>
-        <video class="video lozad" id="Structural_Analogies" loop playsinline autoPlay muted
+        <video class="video" id="Structural_Analogies" loop playsinline autoPlay muted
             src="assets/videos/structural_analogies.mp4"></video>
     </div>
 
@@ -239,7 +238,7 @@
             With the coordinate-based representation, we can re-decorate the generated ones with ease, via simply
             remapping to exemplars of different appearance.
         </p>
-        <video class="video lozad" id="Re-decoration" loop playsinline autoPlay muted
+        <video class="video" id="Re-decoration" loop playsinline autoPlay muted
             src="assets/videos/re-decoration.mp4"></video>
     </div>
 
@@ -259,13 +258,9 @@
                 <label style="color: rgb(154, 187, 220);"> generated scene</label>
             </div>
         </div>
-        <video class="video lozad" id="Real-world" loop playsinline autoPlay muted
+        <video class="video" id="Real-world" loop playsinline autoPlay muted
             src="assets/videos/real-world.mp4"></video>
     </div>
-    <script>
-        const observer = lozad();
-        observer.observe();
-    </script>
 </body>
 <footer>
     <!-- TBD -->

@@ -20,8 +20,8 @@ function magnify(imgID, zoom, init_x, init_y) {
     w = glass.offsetWidth / 2;
     h = glass.offsetHeight / 2;
     
-    x = init_x;
-    y = init_y;
+    x = img.width * init_x;
+    y = img.height * init_y;
     /* Prevent the magnifier glass from being positioned outside the image: */
     if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
     if (x < w / zoom) {x = w / zoom;}
@@ -77,5 +77,5 @@ function magnify(imgID, zoom, init_x, init_y) {
 
 window.addEventListener('load', function () {
     var scale = 5;
-    magnify("zoom-in", scale, 610, 115);
+    magnify("zoom-in", scale, 0.615, 0.70);
 })

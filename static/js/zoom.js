@@ -76,6 +76,6 @@ function magnify(imgID, zoom, init_x, init_y) {
   }
 
 window.addEventListener('load', function () {
-    var scale = 5;
+    var scale = 3;
     magnify("zoom-in", scale, 0.615, 0.70);
 })

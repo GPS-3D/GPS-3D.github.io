@@ -42,14 +42,16 @@
 </head>
 
 <body>
-
     <div class="section hero nerf-_v2">
         <div class="container-2 nerf_header_v2 w-container">
             <h1 class="nerf_title_v2">Patch-based 3D Natural Scene Generation <br> from a Single Example</h1>
             <h1 class="nerf_subheader_v2">Anonymous</h1>
             <div>
-                <span class="center"><img src="assets/images/teaser.png"></span>
-                <p>High-quality artistic imagery created with generated scenes (background sky post-added)</p>
+                <!-- <span class="center"><img src="assets/images/teaser.png"></span> -->
+                <!-- <p>High-quality artistic imagery created with generated scenes (background sky post-added)</p> -->
+                <video class="video" id="Diverse-Generation" loop playsinline autoPlay muted
+                    src="assets/videos/high-quality.mp4"></video>
+                <p>High-quality 3D scenes created by our method (background sky post-added)</p>
             </div>
         </div>
     </div>
@@ -157,23 +159,23 @@
 
         </div>
 
+        <video class="video" id="Eiditing" loop playsinline autoPlay muted src="assets/videos/diverse_generation.mp4"></video>
+
     </div>
 
-
     <div class="white_section_nerf grey_container w-container">
-        <h2 class="grey-heading_nerf">
-            Higher-resolution Generation
-            <button onClick="random_image()"><i class="fa fa-refresh"></i></button>
-
-        </h2>
+        <h2 class="grey-heading_nerf">Higher-resolution Generation</h2>
         <p class="paragraph-3 nerf_text nerf_results_text">
             A novel ”A Thousand Li of Rivers and Mountains” is rendered from a generated 3D sample.
-            The resolution of the scene is 1328 × 512 × 200, and the image resolution is 4096 × 1024.
+            The resolution of the scene is 1328 × 512 × 200, and image resolution is 4096 × 1024.
+            <button onClick="random_image()" style="background:#00000000"><i class="fa fa-refresh"
+                    id="refresh-icon"></i></button>
         </p>
         <div class="img-magnifier-container">
             <img id="zoom-in" src="assets/images/high_reso/scene_s29552_00010.png">
             <script>
                 function random_image() {
+                    document.getElementById('refresh-icon').classList.add('fa-spin');
                     var old = document.getElementById('img-magnifier-glass');
                     old.remove();
 
@@ -195,6 +197,8 @@
                     ];
                     node.src = images[indx][0];
                     magnify("zoom-in", 5, images[indx][1], images[indx][2]);
+
+                    document.getElementById('refresh-icon').classList.remove('fa-spin');
                 }
             </script>
         </div>
@@ -208,8 +212,7 @@
             proxy, which can be the underlining mapping field or mesh,
             for editing scenes, such as removal, duplication, and modification.
         </p>
-        <video class="video" id="Eiditing" loop playsinline autoPlay muted
-            src="assets/videos/editing.mp4"></video>
+        <video class="video" id="Eiditing" loop playsinline autoPlay muted src="assets/videos/editing.mp4"></video>
     </div>
 
     <div class="white_section_nerf grey_container w-container">
@@ -258,8 +261,7 @@
                 <label style="color: rgb(154, 187, 220);"> generated scene</label>
             </div>
         </div>
-        <video class="video" id="Real-world" loop playsinline autoPlay muted
-            src="assets/videos/real-world.mp4"></video>
+        <video class="video" id="Real-world" loop playsinline autoPlay muted src="assets/videos/real-world.mp4"></video>
     </div>
 </body>
 <footer>
